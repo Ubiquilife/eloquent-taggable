@@ -56,9 +56,9 @@ class TagService
      *
      * @param string $tagName
      *
-     * @return Tag
+     * @return mixed
      */
-    public function findOrCreate(string $tagName): Tag
+    public function findOrCreate(string $tagName)
     {
         $tag = $this->find($tagName);
 

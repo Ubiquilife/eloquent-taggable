@@ -1,8 +1,13 @@
 # Changelog
 
+## 9.0.0 - 27-Jan-2022
+
+- Laravel 9.0 support
+
+
 ## 8.0.3 - 30-Mar-2021
 
-- fixes for Postgres(#123 and #124, thanks @0528Makoto)
+- fixes for Postgres (#123 and #124, thanks @0528Makoto)
 
 
 ## 8.0.2 - 04-Jan-2021

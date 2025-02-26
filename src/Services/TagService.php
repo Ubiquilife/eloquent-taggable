@@ -85,8 +85,8 @@ class TagService
             );
         } else {
             throw new \ErrorException(
-                __CLASS__ . '::' . __METHOD__ . ' expects parameter 1 to be string, array, Tag or Collection; ' .
-                gettype($tags) . ' given'
+                __CLASS__ . '::' . __METHOD__ . ' expects parameter 1 to be string, array, Tag or Collection; '
+                . gettype($tags) . ' given'
             );
         }
 
@@ -320,8 +320,8 @@ class TagService
         /** @var Tag $tag */
         $tag = new $this->tagModel();
 
-        return $tag->getConnection()->getTablePrefix() .
-                $tag->getTable();
+        return $tag->getConnection()->getTablePrefix()
+                . $tag->getTable();
     }
 
     /**
@@ -341,8 +341,8 @@ class TagService
                 }
             };
 
-        return $instance->tags()->getConnection()->getTablePrefix() .
-                $instance->tags()->getTable();
+        return $instance->tags()->getConnection()->getTablePrefix()
+                . $instance->tags()->getTable();
     }
 
     private function getClassTaggableType($class): string

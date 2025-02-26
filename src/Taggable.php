@@ -463,8 +463,8 @@ trait Taggable
     {
         $morph = $this->tags();
 
-        return $morph->getTable() . '_' . $alias .
-            '.' . $morph->getRelatedPivotKeyName();
+        return $morph->getTable() . '_' . $alias
+            . '.' . $morph->getRelatedPivotKeyName();
     }
 
     /**
@@ -474,8 +474,8 @@ trait Taggable
     {
         $morph = $this->tags();
 
-        return $morph->getTable() . '_' . $alias .
-            '.' . $morph->getForeignPivotKeyName();
+        return $morph->getTable() . '_' . $alias
+            . '.' . $morph->getForeignPivotKeyName();
     }
 
     /**

@@ -1,5 +1,10 @@
 # Changelog
 
+## 12.0.0 - 26-Feb-2025
+
+- Added Laravel 12 support
+
+
 ## 11.0.2 - 20-Dec-2024
 
 - Support PHP 8.4 (#148, thanks @tectiv3)

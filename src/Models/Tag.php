@@ -1,4 +1,6 @@
-<?php namespace Cviebrock\EloquentTaggable\Models;
+<?php
+
+namespace Cviebrock\EloquentTaggable\Models;
 
 use Cviebrock\EloquentTaggable\Services\TagService;
 use Illuminate\Database\Eloquent\Builder;
@@ -6,25 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Arr;
 
-
 /**
- * Class Tag
+ * Class Tag.
+ *
+ * @property int    $tag_id
+ * @property string $name
+ * @property string $normalized
  */
 class Tag extends Model
 {
-
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $table;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $primaryKey = 'tag_id';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected $fillable = [
         'name',
@@ -32,7 +36,7 @@ class Tag extends Model
     ];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function __construct(array $attributes = [])
     {
@@ -60,11 +64,6 @@ class Tag extends Model
 
     /**
      * Scope to find tags by name.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param $value
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeByName(Builder $query, string $value): Builder
     {
@@ -74,12 +73,12 @@ class Tag extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function getRelationValue($key)
+    public function isRelation($key)
     {
         // Check for regular relation first
-        if ($return = parent::getRelationValue($key)) {
+        if ($return = parent::isRelation($key)) {
             return $return;
         }
 
@@ -89,19 +88,17 @@ class Tag extends Model
         if ($relatedClass) {
             $relation = $this->taggedModels($relatedClass);
 
-            return tap($relation->getResults(), function($results) use ($key) {
+            return tap($relation->getResults(), function ($results) use ($key) {
                 $this->setRelation($key, $results);
             });
         }
+
+        return false;
     }
 
     /**
      * Get the inverse of the polymorphic relation, via an attribute
      * defining the type of models to return.
-     *
-     * @param string $class
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     protected function taggedModels(string $class): MorphToMany
     {
@@ -113,8 +110,6 @@ class Tag extends Model
     /**
      * Find the tag with the given name.
      *
-     * @param string $value
-     *
      * @return static|null
      */
     public static function findByName(string $value)
@@ -123,11 +118,10 @@ class Tag extends Model
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function __toString(): string
     {
         return (string) $this->getAttribute('name');
     }
-
 }

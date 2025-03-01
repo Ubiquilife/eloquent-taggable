@@ -1,6 +1,6 @@
 {
     "name": "cviebrock/eloquent-taggable",
-    "description": "Easy ability to tag your Eloquent models in Laravel 5.",
+    "description": "Easy ability to tag your Eloquent models in Laravel.",
     "keywords": [
         "laravel",
         "eloquent",
@@ -21,16 +21,17 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "illuminate/config": "^9.0",
-        "illuminate/database": "^9.0",
-        "illuminate/support": "^9.0"
+        "php": "^8.2",
+        "illuminate/config": "^12.0",
+        "illuminate/database": "^12.0",
+        "illuminate/support": "^12.0"
     },
     "require-dev": {
-        "limedeck/phpunit-detailed-printer": "^6.0",
-        "orchestra/database": "^7.0",
-        "orchestra/testbench": "^7.18",
-        "phpunit/phpunit": "^9.5.10"
+        "friendsofphp/php-cs-fixer": "^3.65",
+        "larastan/larastan": "^3.0",
+        "orchestra/testbench": "^10.0",
+        "pestphp/pest": "^3.7",
+        "phpstan/phpstan": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -43,12 +44,19 @@
         }
     },
     "scripts": {
+        "analyze": "vendor/bin/phpstan analyze",
         "fresh": [
             "rm -rf vendor composer.lock",
             "composer install"
         ],
+        "style:check": "vendor/bin/php-cs-fixer check -v",
+        "style:fix": "vendor/bin/php-cs-fixer fix -v",
         "tests": [
-            "php vendor/bin/phpunit"
+            "rm -rf build",
+            "XDEBUG_MODE=coverage php vendor/bin/pest"
+        ],
+        "tests:ci": [
+            "vendor/bin/pest --teamcity"
         ],
         "post-autoload-dump": [
             "@php ./vendor/bin/testbench package:discover --ansi"
@@ -64,6 +72,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }

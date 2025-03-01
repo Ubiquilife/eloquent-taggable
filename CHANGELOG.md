@@ -1,5 +1,53 @@
 # Changelog
 
+## 12.0.0 - 26-Feb-2025
+
+- Added Laravel 12 support
+
+
+## 11.0.2 - 20-Dec-2024
+
+- Support PHP 8.4 (#148, thanks @tectiv3)
+- various other code style and analysis fixes 
+
+
+## 11.0.1 - 06-Jun-2024
+
+- make return of `allTags()` consistent (#146, thanks @y1n0)
+
+
+## 11.0.0 - 12-Mar-2024
+
+- Added Laravel 11 support
+- Changed the minimum PHP version to 8.2 to line up with Laravel 11
+
+
+## 10.0.3 - 02-Feb-2024
+
+- fix for deprecated `preg_split` parameter value (#144, thanks @XternalSoft)
+
+
+## 10.0.2 - 11-Jan-2024
+
+- more fixes for morph relations (#142, thanks @anaxamaxan)
+
+
+## 10.0.1 - 06-Jan-2024
+
+- fixes for morph relations (#140, thanks @anaxamaxan)
+
+
+## 10.0.0 - 17-Feb-2023
+
+- Laravel 10.0 support
+- switch to using Pest instead of PHPUnit for tests
+
+
+## 9.0.1 - 17-Feb-2023
+
+- fixes for `taggedModels` not working
+
+
 ## 9.0.0 - 27-Jan-2022
 
 - Laravel 9.0 support

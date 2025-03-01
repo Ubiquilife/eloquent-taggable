@@ -14,15 +14,28 @@ Easily add the ability to tag your Eloquent models in Laravel.
 [![License](https://img.shields.io/packagist/l/cviebrock/eloquent-taggable)](LICENSE.md)
 
 
-* [Installation](#installation)
-* [Updating your Eloquent Models](#updating-your-eloquent-models)
-* [Usage](#usage)
-* [Query Scopes](#query-scopes)
-* [The Tag Model](#the-tag-model)
-* [The TagService Class](#the-tagservice-class)
-* [Configuration](#configuration)
-* [Bugs, Suggestions, Contributions and Support](#bugs-suggestions-contributions-and-support)
-* [Copyright and License](#copyright-and-license)
+- [Eloquent-Taggable](#eloquent-taggable)
+  - [Installation](#installation)
+  - [Updating your Eloquent Models](#updating-your-eloquent-models)
+  - [Usage](#usage)
+    - [Adding and Removing Tags from a Model](#adding-and-removing-tags-from-a-model)
+    - [Working with a Model's Tags](#working-with-a-models-tags)
+  - [Query Scopes](#query-scopes)
+  - [Events](#events)
+  - [Other Methods](#other-methods)
+  - [The Tag Model](#the-tag-model)
+  - [The TagService Class](#the-tagservice-class)
+  - [Configuration](#configuration)
+    - [delimiters](#delimiters)
+    - [glue](#glue)
+    - [normalizer](#normalizer)
+    - [connection](#connection)
+    - [throwEmptyExceptions](#throwemptyexceptions)
+    - [taggedModels](#taggedmodels)
+    - [model](#model)
+    - [tables](#tables)
+  - [Bugs, Suggestions, Contributions and Support](#bugs-suggestions-contributions-and-support)
+  - [Copyright and License](#copyright-and-license)
 
 
 ---
@@ -35,6 +48,9 @@ version should match the Laravel version.
 
 | Laravel Version | Package Version |
 |:---------------:|:---------------:|
+|      ^12.0      |      ^12.0      |
+|      ^11.0      |      ^11.0      |
+|      ^10.0      |      ^10.0      |
 |       9.0       |      ^9.0       |
 |       8.0       |      ^8.0       |
 |       7.0       |      ^7.0       |
@@ -660,12 +676,6 @@ model, service, and migration classes will all read the configuration values.
 Thanks to [everyone](https://github.com/cviebrock/eloquent-taggable/graphs/contributors)
 who has contributed to this project, with a big shout-out to
 [Michael Riediger](https://stackoverflow.com/users/502502/riedsio) for helping optimize the SQL.
-
-Special thanks to
-[JetBrains](https://www.jetbrains.com/?from=cviebrock/eloquent-taggable) for their
-Open Source License Program ... and the excellent PHPStorm IDE, of course!
-
-[![JetBrains](./.github/jetbrains.svg)](https://www.jetbrains.com/?from=cviebrock/eloquent-taggable)
 
 Please use [GitHub](https://github.com/cviebrock/eloquent-taggable) for reporting bugs,
 and making comments or suggestions.

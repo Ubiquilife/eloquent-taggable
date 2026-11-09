@@ -34,6 +34,41 @@ abstract class TestCase extends Orchestra
     /**
      * {@inheritdoc}
      */
+    protected function getEnvironmentSetUp($app)
+    {
+        $this->createTestDatabase();
+    }
+
+    /**
+     * The test database lives on the test MySQL server, 127.0.0.1:3310 (see
+     * phpunit.xml), and is made there the first time it is needed. Anywhere
+     * else, GitHub Actions passing the port of its own service for one, it
+     * already exists.
+     */
+    private function createTestDatabase(): void
+    {
+        $database = (string) getenv('DB_DATABASE');
+
+        if (getenv('DB_HOST') !== '127.0.0.1' || getenv('DB_PORT') !== '3310' || $database === '') {
+            return;
+        }
+
+        try {
+            $pdo = new \PDO(
+                'mysql:host=127.0.0.1;port=3310',
+                (string) getenv('DB_USERNAME'),
+                (string) getenv('DB_PASSWORD'),
+                [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_TIMEOUT => 3]
+            );
+            $pdo->exec('CREATE DATABASE IF NOT EXISTS `' . str_replace('`', '', $database) . '`');
+        } catch (\Throwable) {
+            // Not answering. The first test that needs the database reports it.
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getPackageProviders($app)
     {
         return [
